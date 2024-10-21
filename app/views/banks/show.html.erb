@@ -1,0 +1,19 @@
+<h1>Bank: <%= @bank.name %></h1>
+
+<p>
+  <strong>Requisition ID:</strong>
+  <%= @bank.requisition_id %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @bank.link %>
+</p>
+
+<p>
+  <strong>Household ID:</strong>
+  <%= @bank.household_id %>
+</p>
+
+<%= link_to 'Edit', edit_bank_path(@bank) %> |
+<%= link_to 'Back', banks_path %>

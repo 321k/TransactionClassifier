@@ -1,0 +1,83 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Include Chart.js -->
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", () => {
+
+    // First chart
+    const overview_ctx = document.getElementById('spend_overview_graph').getContext('2d');
+    new Chart(overview_ctx, {
+      type: 'bar', // Change to 'bar', 'pie', etc., as needed
+      data: {
+        labels: <%= overview_labels.to_json.html_safe %>,
+        datasets: [{
+          label: 'Total Spend',
+          data: <%= overview_values.to_json.html_safe %>,
+          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    // Second chart - Corrected part
+    const barCtx = document.getElementById('spend_by_category_graph').getContext('2d');
+    const categoriesData = <%= categories_data.to_json.html_safe %>;
+    const categoryLabels = <%= category_labels.to_json.html_safe %>;
+
+    const colors = [
+      'rgba(255, 99, 132, 0.2)',
+      'rgba(54, 162, 235, 0.2)',
+      'rgba(255, 206, 86, 0.2)',
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(153, 102, 255, 0.2)',
+      'rgba(255, 159, 64, 0.2)',
+      'rgba(199, 199, 199, 0.2)', // Add more colors as needed
+      // Repeat or add more colors if you have many categories
+    ];
+
+    const borderColors = [
+      'rgba(255, 99, 132, 1)',
+      'rgba(54, 162, 235, 1)',
+      'rgba(255, 206, 86, 1)',
+      'rgba(75, 192, 192, 1)',
+      'rgba(153, 102, 255, 1)',
+      'rgba(255, 159, 64, 1)',
+      'rgba(199, 199, 199, 1)', // Add more border colors as needed
+      // Repeat or add more border colors if you have many categories
+    ];
+
+
+    const datasets = Object.keys(categoriesData).map((category, index) => ({
+      label: category,
+      data: categoriesData[category], // Use the category to access its corresponding data
+      backgroundColor: colors[index % colors.length],
+      borderColor: borderColors[index % borderColors.length], 
+      borderWidth: 1
+    }));
+
+    new Chart(barCtx, {
+      type: 'bar',
+      data: {
+        labels: categoryLabels, // Use the array of labels here
+        datasets: datasets
+      },
+      options: {
+        scales: {
+          x: {
+            stacked: true
+          },
+          y: {
+            stacked: true,
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  });
+</script>

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: MyString
+  sub_category: MyString
+  merchant: one
+  confidence_score: 1
+
+two:
+  category: MyString
+  sub_category: MyString
+  merchant: two
+  confidence_score: 1

@@ -1,0 +1,195 @@
+.
+├── Gemfile
+├── Gemfile.lock
+├── README.md
+├── Rakefile
+├── app
+│   ├── admin
+│   │   ├── admin_users.rb
+│   │   ├── bank_accounts.rb
+│   │   ├── banks.rb
+│   │   ├── classifications.rb
+│   │   ├── dashboard.rb
+│   │   ├── households.rb
+│   │   ├── transactions.rb
+│   │   └── users.rb
+│   ├── assets
+│   │   ├── config
+│   │   │   └── manifest.js
+│   │   ├── images
+│   │   ├── javascripts
+│   │   │   └── active_admin.js
+│   │   └── stylesheets
+│   │       ├── active_admin.scss
+│   │       └── application.css
+│   ├── channels
+│   │   └── application_cable
+│   │       ├── channel.rb
+│   │       └── connection.rb
+│   ├── controllers
+│   │   ├── application_controller.rb
+│   │   └── concerns
+│   ├── helpers
+│   │   └── application_helper.rb
+│   ├── javascript
+│   │   ├── application.js
+│   │   └── controllers
+│   │       ├── application.js
+│   │       ├── hello_controller.js
+│   │       └── index.js
+│   ├── jobs
+│   │   └── application_job.rb
+│   ├── mailers
+│   │   └── application_mailer.rb
+│   ├── models
+│   │   ├── admin_user.rb
+│   │   ├── application_record.rb
+│   │   ├── bank.rb
+│   │   ├── bank_account.rb
+│   │   ├── classification.rb
+│   │   ├── concerns
+│   │   ├── household.rb
+│   │   ├── transaction.rb
+│   │   ├── user.rb
+│   │   └── user_feedback.rb
+│   ├── services
+│   │   ├── gocardless_client.rb
+│   │   └── openai_client.rb
+│   └── views
+│       ├── admin
+│       │   └── shared
+│       │       └── _chart.html.erb
+│       └── layouts
+│           ├── active_admin.html.erb
+│           ├── application.html.erb
+│           ├── mailer.html.erb
+│           └── mailer.text.erb
+├── bin
+│   ├── bundle
+│   ├── importmap
+│   ├── rails
+│   ├── rake
+│   └── setup
+├── config
+│   ├── application.rb
+│   ├── boot.rb
+│   ├── cable.yml
+│   ├── credentials.yml.enc
+│   ├── database.yml
+│   ├── environment.rb
+│   ├── environments
+│   │   ├── development.rb
+│   │   ├── production.rb
+│   │   └── test.rb
+│   ├── importmap.rb
+│   ├── initializers
+│   │   ├── active_admin.rb
+│   │   ├── assets.rb
+│   │   ├── content_security_policy.rb
+│   │   ├── devise.rb
+│   │   ├── filter_parameter_logging.rb
+│   │   ├── inflections.rb
+│   │   ├── openai.rb
+│   │   └── permissions_policy.rb
+│   ├── locales
+│   │   ├── devise.en.yml
+│   │   └── en.yml
+│   ├── master.key
+│   ├── puma.rb
+│   ├── routes.rb
+│   └── storage.yml
+├── config.ru
+├── db
+│   ├── development.sqlite3
+│   ├── migrate
+│   │   ├── 20240226195740_create_transactions.rb
+│   │   ├── 20240226195817_create_classifications.rb
+│   │   ├── 20240226195827_create_user_feedbacks.rb
+│   │   ├── 20240226195830_create_users.rb
+│   │   ├── 20240226202306_make_classification_id_optional_in_transactions.rb
+│   │   ├── 20240226202847_devise_create_admin_users.rb
+│   │   ├── 20240226202849_create_active_admin_comments.rb
+│   │   ├── 20240227124851_add_currency_to_transactions.rb
+│   │   ├── 20240227125102_add_internal_transaction_id_to_transaction.rb
+│   │   ├── 20240227131244_remove_merchant_id_from_transactions.rb
+│   │   ├── 20240227131658_remove_merchant_id_from_classifications.rb
+│   │   ├── 20240227133537_rename_merchant_name_to_description_in_transactions.rb
+│   │   ├── 20240227135128_create_merchants.rb
+│   │   ├── 20240227135453_add_merchant_id_to_transactions.rb
+│   │   ├── 20240227135631_remove_classification_id_from_transactions.rb
+│   │   ├── 20240227135817_create_join_table_merchant_classification.rb
+│   │   ├── 20240228083748_drop_and_recreate_classifications.rb
+│   │   ├── 20240228084145_add_fields_to_classifications.rb
+│   │   ├── 20240228084352_drop_join_table_for_merchants_classifications.rb
+│   │   ├── 20240228085405_add_bank_account_to_transactions.rb
+│   │   ├── 20240228085817_create_bank_accounts.rb
+│   │   ├── 20240228085930_remove_user_from_transactions.rb
+│   │   ├── 20240228111956_create_households.rb
+│   │   ├── 20240228112133_add_household_to_bank_accounts.rb
+│   │   ├── 20240228194816_add_requisition_id_and_link_to_households.rb
+│   │   ├── 20240228205524_remove_user_id_from_bank_accounts.rb
+│   │   ├── 20240228205902_create_banks.rb
+│   │   ├── 20240228205927_add_bank_to_bank_accounts.rb
+│   │   ├── 20240228210133_remove_household_from_bank_accounts.rb
+│   │   ├── 20240228210136_remove_link_and_requisition_id_from_bank_accounts.rb
+│   │   ├── 20240228210232_remove_bank_name_from_bank_accounts.rb
+│   │   ├── 20240228214906_rename_bank_account_to_bank_account_id_in_transactions.rb
+│   │   ├── 20240228220137_remove_requisition_id_and_link_from_households.rb
+│   │   ├── 20240229083117_add_gocardless_bank_identifier_to_banks.rb
+│   │   ├── 20240229145036_add_country_to_households.rb
+│   │   ├── 20240229145047_remove_country_from_banks.rb
+│   │   ├── 20240229164311_remove_merchant_from_transactions.rb
+│   │   ├── 20240229164342_drop_merchants_table.rb
+│   │   ├── 20240229164420_add_transaction_to_classifications.rb
+│   │   └── 20240305211239_remove_merchant_id_from_classifications_again.rb
+│   ├── schema.rb
+│   ├── seeds.rb
+│   └── test.sqlite3
+├── lib
+│   ├── assets
+│   └── tasks
+├── project_structure.txt
+├── public
+│   ├── 404.html
+│   ├── 422.html
+│   ├── 500.html
+│   ├── apple-touch-icon-precomposed.png
+│   ├── apple-touch-icon.png
+│   ├── favicon.ico
+│   └── robots.txt
+├── spec
+│   ├── models
+│   │   ├── admin_user_spec.rb
+│   │   ├── bank_account_spec.rb
+│   │   ├── bank_spec.rb
+│   │   ├── household_spec.rb
+│   │   └── merchant_spec.rb
+│   ├── rails_helper.rb
+│   └── spec_helper.rb
+├── storage
+└── test
+    ├── application_system_test_case.rb
+    ├── channels
+    │   └── application_cable
+    │       └── connection_test.rb
+    ├── controllers
+    ├── fixtures
+    │   ├── classifications.yml
+    │   ├── files
+    │   ├── merchants.yml
+    │   ├── transactions.yml
+    │   ├── user_feedbacks.yml
+    │   └── users.yml
+    ├── helpers
+    ├── integration
+    ├── mailers
+    ├── models
+    │   ├── classification_test.rb
+    │   ├── merchant_test.rb
+    │   ├── transaction_test.rb
+    │   ├── user_feedback_test.rb
+    │   └── user_test.rb
+    ├── system
+    └── test_helper.rb
+
+49 directories, 144 files

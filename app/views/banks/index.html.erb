@@ -1,0 +1,31 @@
+<h1>Banks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Requisition ID</th>
+      <th>Link</th>
+      <th>Country</th>
+      <th>Household</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @banks.each do |bank| %>
+      <tr>
+        <td><%= bank.name %></td>
+        <td><%= bank.requisition_id %></td>
+        <td><%= bank.link %></td>
+        <td><%= bank.household_id %></td>
+        <td>
+          <%= link_to 'Show', bank %>
+          <%= link_to 'Edit', edit_bank_path(bank) %>
+          <%= link_to 'Destroy', bank, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Bank', new_bank_path %>

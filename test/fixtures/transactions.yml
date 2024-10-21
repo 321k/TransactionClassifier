@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  amount: 9.99
+  merchant_name: MyString
+  user: one
+  booking_date: 2024-02-26
+  value_date: 2024-02-26
+  classification: one
+
+two:
+  amount: 9.99
+  merchant_name: MyString
+  user: two
+  booking_date: 2024-02-26
+  value_date: 2024-02-26
+  classification: two
